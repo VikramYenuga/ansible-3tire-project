@@ -1,0 +1,21 @@
+- name: Deploy frontend and backend containers from GitHub
+  hosts: all
+  become: yes
+
+  vars:
+    repo_url: "https://github.com/VikramYenuga/ansible-3tire-project.git"
+    app_path: "/root/vikram/"
+    frontend_image: "frontend-app:latest"
+    backend_image: "backend-app:latest"
+    rds_host: "database-1.cx04ocg8w0u9.ap-south-1.rds.amazonaws.com"
+    rds_user: "admin"
+    rds_password: "Cloud123"
+    rds_port: "3306"
+
+  roles:
+    - common
+    - gitclone
+    - backend
+    - frontend
+    
+
